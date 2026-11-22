@@ -55,8 +55,9 @@ def main():
             tiles = []
             for j, v in enumerate(vids):
                 S, video, v0, P = cache[v]
-                f = phone_frame(video, S['t_pol'][P[ph]] - v0)
-                f = cv2.resize(f, (640, 360)); txt(f, f'{lay}  {COLS[j]}  [{"v5" if lay == "L3" else "v4"}]', (8, 24), 0.55, (255, 255, 255), 1, bg=(0, 0, 0))
+                f = phone_frame(video, S['t_pol'][P[ph]] - v0, w=360).copy()     # native portrait aspect (360 x 640)
+                txt(f, f'{lay} [{"v5" if lay == "L3" else "v4"}]', (8, 24), 0.55, (255, 255, 255), 1, bg=(0, 0, 0))
+                txt(f, COLS[j].split('(')[0].strip() + ('' if j == 0 else (' K=20' if j == 1 else ' adaptive')), (8, 52), 0.5, (255, 255, 255), 1, bg=(0, 0, 0))
                 tiles.append(f)
             rows.append(np.hstack(tiles))
         cv2.imwrite(str(OUT / f'phone_grid_{ph}.jpg'), np.vstack(rows), [cv2.IMWRITE_JPEG_QUALITY, 85])

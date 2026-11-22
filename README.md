@@ -31,13 +31,21 @@
 
 ## Media
 
-**Real robot, per-frame algorithm visualisation** (15x speed; phone + wrist RGB-D + anchor, delta, 1 s plan, encodes):
+**Real robot, third-person view** (phone, native aspect, 15x speed):
 
 | | A dense | B fixed K=20 | B adaptive |
 |---|---|---|---|
-| L1 (v4) | ![](media/gif/a_l1_r1_15x.gif) | ![](media/gif/b_l1_r1_15x.gif) | ![](media/gif/c_l1_r1_15x.gif) |
-| L2 (v4) | ![](media/gif/a_l2_r1_15x.gif) | ![](media/gif/b_l2_r1_15x.gif) | ![](media/gif/c_l2_r1_15x.gif) |
-| L3 (v5) | ![](media/gif/a_l3_r1_15x.gif) | ![](media/gif/b_l3_r1_15x.gif) | ![](media/gif/c_l3_r1_15x.gif) |
+| L1 (v4) | <img src="media/gif/a_l1_r1_phone_15x.gif" width="200"> | <img src="media/gif/b_l1_r1_phone_15x.gif" width="200"> | <img src="media/gif/c_l1_r1_phone_15x.gif" width="200"> |
+| L2 (v4) | <img src="media/gif/a_l2_r1_phone_15x.gif" width="200"> | <img src="media/gif/b_l2_r1_phone_15x.gif" width="200"> | <img src="media/gif/c_l2_r1_phone_15x.gif" width="200"> |
+| L3 (v5) | <img src="media/gif/a_l3_r1_phone_15x.gif" width="200"> | <img src="media/gif/b_l3_r1_phone_15x.gif" width="200"> | <img src="media/gif/c_l3_r1_phone_15x.gif" width="200"> |
+
+**Algorithm view of the same runs** (15x speed). Each shows the live wrist camera next to the image the policy uses (B: the frozen anchor), plus depth, the top-view path with the anchor, delta and 1 s plan, and the encode timelines:
+
+| | A dense | B fixed K=20 | B adaptive |
+|---|---|---|---|
+| L1 (v4) | ![](media/gif/a_l1_r1_algo_15x.gif) | ![](media/gif/b_l1_r1_algo_15x.gif) | ![](media/gif/c_l1_r1_algo_15x.gif) |
+| L2 (v4) | ![](media/gif/a_l2_r1_algo_15x.gif) | ![](media/gif/b_l2_r1_algo_15x.gif) | ![](media/gif/c_l2_r1_algo_15x.gif) |
+| L3 (v5) | ![](media/gif/a_l3_r1_algo_15x.gif) | ![](media/gif/b_l3_r1_algo_15x.gif) | ![](media/gif/c_l3_r1_algo_15x.gif) |
 
 **Delta from kinematics, with RGB-D** (2x): ![](media/gif/delta_rgbd_b_l3_r1.gif)
 

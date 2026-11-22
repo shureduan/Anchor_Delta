@@ -1,4 +1,5 @@
-"""Per-frame visualisation of one real-robot run: phone video + wrist RGB-D + the policy's algorithm state.
+"""Per-frame visualisation of one real-robot run: the policy's algorithm state on the wrist RGB-D stream, plus the
+phone (third-person) video exported separately at its native portrait aspect ratio.
 
     ../kinova_bottle_sim/.venv/bin/python render_run.py b_l3_r1.MOV            # -> out/b_l3_r1_viz.mp4
     ../kinova_bottle_sim/.venv/bin/python render_run.py b_l3_r1.MOV --still 85  # one PNG at policy step 85
@@ -173,54 +174,52 @@ def render(video, run, out, still=None, fps=30, mode=None):
     times = T0 + np.arange(n_out) / fps
     if still is not None:
         times = np.array([S['t_pol'][still] + 0.05])
-    # phone frames, streamed
-    ss = max(times[0] - v0, 0)
-    ph = subprocess.Popen(['ffmpeg', '-v', 'error', '-ss', f'{ss:.3f}', '-i', str(video), '-vf', f'fps={fps},scale=960:540',
-                           '-f', 'rawvideo', '-pix_fmt', 'bgr24', '-'], stdout=subprocess.PIPE)
+    if still is None:          # phone clip of exactly the same time window, native portrait aspect (iPhone, rotation -90)
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', f'{max(T0 - v0, 0):.3f}', '-t', f'{T1 - T0:.3f}', '-i', str(video),
+                        '-vf', 'scale=540:-2', '-an', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '23', '-preset', 'veryfast',
+                        str(out).replace('_algo.mp4', '_phone.mp4')])
     wr = None
     if still is None:
         wr = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'bgr24', '-s', f'{W}x{H}', '-r', str(fps), '-i', '-',
                                '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '23', '-preset', 'veryfast', str(out)], stdin=subprocess.PIPE)
     steps = len(L); dense_bytes = np.cumsum(S['nbytes']); store_bytes = np.cumsum(np.where(S['enc'], S['nbytes'], 0) + (20 if pol == 'B' else 0))
     enc_cum = np.cumsum(S['enc']); xs = np.arange(steps)
-    last_enc_t = -1e9; ph_frame = np.zeros((540, 960, 3), np.uint8)
+    tj = ROOT / 'kinova_report/data/real_timing_clean.json'
+    ms_clean = json.load(open(tj)).get(run, {}).get('ms_per_step', float(np.mean(S['ms']))) if tj.exists() else float(np.mean(S['ms']))
+    last_enc_t = -1e9
     for T in times:
-        buf = ph.stdout.read(960 * 540 * 3)
-        if len(buf) == 960 * 540 * 3:
-            ph_frame = np.frombuffer(buf, np.uint8).reshape(540, 960, 3)
         k = int(np.searchsorted(S['t_pol'], T, 'right') - 1)        # policy step whose decision is active at T
         started = k >= 0; k = max(k, 0)
         i = int(np.clip(np.searchsorted(S['t_rec'], T, 'right') - 1, 0, len(S['t_rec']) - 1))
         img = np.full((H, W, 3), 18, np.uint8)
-        # ---- phone
-        img[0:540, 0:960] = ph_frame
-        txt(img, f'{m["note"].split()[0]}   {CFG_NAME[(pol, rule)]}   [{ver}]   result: {"SUCCESS" if m.get("success") else "fail"}',
-            (12, 30), 0.62, (255, 255, 255), 2, bg=(0, 0, 0))
-        # ---- wrist RGB + HUD
+        # ---- left: live wrist RGB + HUD
         wrist = cv2.resize(cv2.imdecode(np.frombuffer(S['jpg'][i], np.uint8), 1), (960, 540), interpolation=cv2.INTER_LINEAR)
-        img[0:540, 960:1920] = wrist
+        img[0:540, 0:960] = wrist
         if started and S['enc'][k]:
             last_enc_t = S['t_pol'][k]
         flash = T - last_enc_t < 0.35
-        txt(img, f'wrist camera   step {k:3d}' if started else 'wrist camera   (waiting for start)', (972, 30), 0.62, (255, 255, 255), 2, bg=(0, 0, 0))
+        txt(img, f'{m["note"].split()[0]}  {CFG_NAME[(pol, rule)]}  [{ver}]  {"SUCCESS" if m.get("success") else "fail"}',
+            (12, 30), 0.6, (255, 255, 255), 2, bg=(0, 0, 0))
+        txt(img, f'live wrist camera   step {k:3d}' if started else 'live wrist camera   (waiting for start)', (12, 64), 0.58, (255, 255, 255), 1, bg=(0, 0, 0))
+        # ---- right: the image the policy is using now (B: the cached anchor, frozen until the next encode)
         if started:
-            r = L[k]
-            txt(img, f'gripper {"CLOSED" if r["grip_cmd"] else "open"}  ({r["grip_pct"]:.0f} %)   close-logit {S["logit"][k]:+.1f}',
-                (972, 520), 0.55, (255, 255, 255), 1, bg=(0, 0, 0))
-            dl = S['delta'][k] * 100
-            txt(img, f'delta = tool - anchor = ({dl[0]:+5.1f}, {dl[1]:+5.1f}, {dl[2]:+5.1f}) cm   |{np.linalg.norm(dl):4.1f}| cm',
-                (972, 492), 0.55, C_ANCH, 1, bg=(0, 0, 0))
-            txt(img, f'anchor age {S["age"][k]:2d} steps ({S["age"][k] / 10:.1f} s)   image encodes {enc_cum[k]}/{k + 1}',
-                (972, 464), 0.55, (255, 255, 255), 1, bg=(0, 0, 0))
-            # PiP: what the policy's image encoder output comes from
-            a = S['anc'][k]
-            pip = cv2.resize(cv2.imdecode(np.frombuffer(S['pjpg'][a], np.uint8), 1), (320, 180))
-            age = S['age'][k]; col = C_ENC if flash else tuple(int(v) for v in np.array(C_ANCH) * max(0.35, 1 - age / 40))
-            cv2.rectangle(pip, (0, 0), (319, 179), col, 4)
-            img[48:228, 1588:1908] = pip
-            txt(img, 'policy image now: ' + ('current frame' if pol == 'A' else f'anchor @ step {a}'), (1590, 246), 0.48, col, 1, bg=(0, 0, 0))
+            r = L[k]; a = S['anc'][k]; age = S['age'][k]
+            pim = cv2.resize(cv2.imdecode(np.frombuffer(S['pjpg'][a], np.uint8), 1), (952, 536), interpolation=cv2.INTER_LINEAR)
+            col = C_ENC if flash else (tuple(int(v) for v in np.array(C_ANCH) * max(0.45, 1 - age / 40)) if pol == 'B' else (120, 120, 120))
+            img[0:540, 960:1920] = col; img[2:538, 964:1916] = pim
+            txt(img, 'image the policy uses now: ' + ('current frame (re-encoded every step)' if pol == 'A' else f'anchor from step {a}'),
+                (976, 30), 0.6, (255, 255, 255), 2, bg=(0, 0, 0))
             if flash:
-                txt(img, 'ENCODE', (1700, 285), 0.9, (255, 255, 255), 2, bg=C_ENC)
+                txt(img, 'ENCODE  (new anchor)' if pol == 'B' else 'ENCODE', (976, 66), 0.75, (255, 255, 255), 2, bg=C_ENC)
+            elif pol == 'B':
+                txt(img, f'FROZEN: reused for {age} step{"s" if age != 1 else ""} ({age / 10:.1f} s), encoder skipped', (976, 66), 0.6, (255, 255, 255), 1, bg=(0, 0, 0))
+            txt(img, f'gripper {"CLOSED" if r["grip_cmd"] else "open"}  ({r["grip_pct"]:.0f} %)   close-logit {S["logit"][k]:+.1f}',
+                (12, 520), 0.55, (255, 255, 255), 1, bg=(0, 0, 0))
+            dl = S['delta'][k] * 100
+            txt(img, f'delta = tool - anchor = ({dl[0]:+5.1f}, {dl[1]:+5.1f}, {dl[2]:+5.1f}) cm   |{np.linalg.norm(dl):4.1f}| cm  (from FK)',
+                (12, 492), 0.55, C_ANCH, 1, bg=(0, 0, 0))
+            txt(img, f'anchor age {age:2d} steps ({age / 10:.1f} s)   image encodes {enc_cum[k]}/{k + 1}',
+                (12, 464), 0.55, (255, 255, 255), 1, bg=(0, 0, 0))
         # ---- depth + accounting
         img[540:900, 0:640] = cv2.resize(depth_vis(S['depth'][i]), (640, 360), interpolation=cv2.INTER_NEAREST)
         txt(img, 'wrist depth (red near 0.12 m .. blue far 0.45 m, black = no data)', (10, 562), 0.5, (255, 255, 255), 1, bg=(0, 0, 0))
@@ -228,7 +227,7 @@ def render(video, run, out, still=None, fps=30, mode=None):
             y = 930
             for s_, col in [(f'image encoder calls : {enc_cum[k]:4d} / {k + 1:4d} steps ({100 * enc_cum[k] / (k + 1):5.1f} %)', (255, 255, 255)),
                             (f'stored visual data   : {store_bytes[k] / 1e3:7.1f} kB  (dense video: {dense_bytes[k] / 1e3:7.1f} kB)', (255, 255, 255)),
-                            (f'policy compute (meas.): {S["ms"][:k + 1].mean():5.1f} ms/step', (200, 200, 200))]:
+                            (f'policy compute (idle-GPU replay): {ms_clean:5.2f} ms/step', (200, 200, 200))]:
                 txt(img, s_, (10, y), 0.52, col); y += 30
             txt(img, 'B stores only anchor frames + 5 floats/step (delta from robot FK + gripper sensor)' if pol == 'B'
                 else 'A stores and encodes every frame', (10, y + 4), 0.45, (150, 150, 150))
@@ -245,7 +244,6 @@ def render(video, run, out, still=None, fps=30, mode=None):
         if still is not None:
             cv2.imwrite(str(out), img); break
         wr.stdin.write(img.tobytes())
-    ph.stdout.close(); ph.wait()
     if wr is not None:
         wr.stdin.close(); wr.wait()
     print('->', out)
@@ -259,7 +257,7 @@ def main():
     run = man[a.video]['run']
     (HERE / 'out').mkdir(exist_ok=True)
     stem = Path(a.video).stem
-    out = HERE / 'out' / (f'{stem}_step{a.still}.png' if a.still is not None else f'{stem}_viz.mp4')
+    out = HERE / 'out' / (f'{stem}_step{a.still}.png' if a.still is not None else f'{stem}_algo.mp4')
     render(PHONE / a.video, run, out, still=a.still, fps=a.fps)
 
 
