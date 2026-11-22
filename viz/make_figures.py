@@ -11,6 +11,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
+from phone_grade import grade
 from render_run import DEMOS, PHONE, depth_vis, load_run, phone_offset, txt
 
 HERE = Path(__file__).resolve().parent
@@ -38,6 +39,8 @@ def rec_index(S, k):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    global GP
+    GP = json.load(open(HERE / 'phone_grade_params.json'))
     man = json.load(open(HERE / 'sync_manifest.json'))
     import datetime
     cache = {}
@@ -55,7 +58,7 @@ def main():
             tiles = []
             for j, v in enumerate(vids):
                 S, video, v0, P = cache[v]
-                f = phone_frame(video, S['t_pol'][P[ph]] - v0, w=360).copy()     # native portrait aspect (360 x 640)
+                f = grade(phone_frame(video, S['t_pol'][P[ph]] - v0, w=360), GP[v]).copy()   # native portrait aspect, graded
                 txt(f, f'{lay} [{"v5" if lay == "L3" else "v4"}]', (8, 24), 0.55, (255, 255, 255), 1, bg=(0, 0, 0))
                 txt(f, COLS[j].split('(')[0].strip() + ('' if j == 0 else (' K=20' if j == 1 else ' adaptive')), (8, 52), 0.5, (255, 255, 255), 1, bg=(0, 0, 0))
                 tiles.append(f)
