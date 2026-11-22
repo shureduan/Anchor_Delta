@@ -1,0 +1,80 @@
+{
+ "real | A dense": {
+  "dir_cos_median": 0.9914129376411438,
+  "dir_ok_frac": 0.9729087279985483,
+  "grip_agree": 0.957045786424231,
+  "encodes_per_frame": 1.0,
+  "episodes": [
+   {
+    "n_moving": 165,
+    "dir_cos_median": 0.9953606724739075,
+    "dir_ok_frac": 0.9757575757575757,
+    "grip_agree": 0.959866220735786,
+    "episode": "20261115_224456",
+    "encodes": 299,
+    "frames": 299
+   },
+   {
+    "n_moving": 167,
+    "dir_cos_median": 0.9874652028083801,
+    "dir_ok_frac": 0.9700598802395209,
+    "grip_agree": 0.954225352112676,
+    "episode": "20261115_224804",
+    "encodes": 284,
+    "frames": 284
+   }
+  ]
+ },
+ "real | B fixed K=20": {
+  "dir_cos_median": 0.9960469305515289,
+  "dir_ok_frac": 0.9819633460352024,
+  "grip_agree": 0.9621508314098639,
+  "encodes_per_frame": 0.051457975986277875,
+  "episodes": [
+   {
+    "n_moving": 165,
+    "dir_cos_median": 0.9969647526741028,
+    "dir_ok_frac": 0.9878787878787879,
+    "grip_agree": 0.9665551839464883,
+    "episode": "20261115_224456",
+    "encodes": 15,
+    "frames": 299
+   },
+   {
+    "n_moving": 167,
+    "dir_cos_median": 0.9951291084289551,
+    "dir_ok_frac": 0.9760479041916168,
+    "grip_agree": 0.9577464788732394,
+    "episode": "20261115_224804",
+    "encodes": 15,
+    "frames": 284
+   }
+  ]
+ },
+ "real | B adaptive 8 cm": {
+  "dir_cos_median": 0.9962260127067566,
+  "dir_ok_frac": 0.9669932861549628,
+  "grip_agree": 0.972714211691554,
+  "encodes_per_frame": 0.03945111492281304,
+  "episodes": [
+   {
+    "n_moving": 165,
+    "dir_cos_median": 0.9992638230323792,
+    "dir_ok_frac": 0.9878787878787879,
+    "grip_agree": 0.9665551839464883,
+    "episode": "20261115_224456",
+    "encodes": 12,
+    "frames": 299
+   },
+   {
+    "n_moving": 167,
+    "dir_cos_median": 0.993188202381134,
+    "dir_ok_frac": 0.9461077844311377,
+    "grip_agree": 0.9788732394366197,
+    "episode": "20261115_224804",
+    "encodes": 11,
+    "frames": 284
+   }
+  ]
+ }
+}

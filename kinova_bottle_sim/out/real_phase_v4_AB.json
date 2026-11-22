@@ -1,0 +1,140 @@
+{
+ "A2": {
+  "ckpt": "runs/A2/last.pt",
+  "rule": "dense",
+  "overall": 0.8644578313253012,
+  "phases": {
+   "1 above the cap": 1.0,
+   "3 down to 4 cm above the grasp height": 1.0,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 1.0,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 1.0,
+   "7 lift (bottle bottom 5 cm above the box rim)": 0.975,
+   "8 over the box": 0.47761194029850745,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 1.0,
+   "10 lower into the box": 1.0,
+   "12 lift away": 0.7352941176470589
+  },
+  "n": {
+   "1 above the cap": 97,
+   "3 down to 4 cm above the grasp height": 24,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 13,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 10,
+   "7 lift (bottle bottom 5 cm above the box rim)": 40,
+   "8 over the box": 67,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 14,
+   "10 lower into the box": 33,
+   "12 lift away": 34
+  }
+ },
+ "B2": {
+  "ckpt": "runs/B2/last.pt",
+  "rule": "fixed",
+  "K": 20,
+  "overall": 0.7740963855421686,
+  "phases": {
+   "1 above the cap": 1.0,
+   "3 down to 4 cm above the grasp height": 1.0,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 1.0,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 1.0,
+   "7 lift (bottle bottom 5 cm above the box rim)": 0.925,
+   "8 over the box": 0.2537313432835821,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 0.2857142857142857,
+   "10 lower into the box": 0.6666666666666666,
+   "12 lift away": 0.9705882352941176
+  },
+  "n": {
+   "1 above the cap": 97,
+   "3 down to 4 cm above the grasp height": 24,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 13,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 10,
+   "7 lift (bottle bottom 5 cm above the box rim)": 40,
+   "8 over the box": 67,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 14,
+   "10 lower into the box": 33,
+   "12 lift away": 34
+  }
+ },
+ "A4": {
+  "ckpt": "runs/A4/last.pt",
+  "rule": "dense",
+  "overall": 0.9728915662650602,
+  "phases": {
+   "1 above the cap": 1.0,
+   "3 down to 4 cm above the grasp height": 1.0,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 1.0,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 1.0,
+   "7 lift (bottle bottom 5 cm above the box rim)": 0.95,
+   "8 over the box": 0.9402985074626866,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 1.0,
+   "10 lower into the box": 1.0,
+   "12 lift away": 0.9117647058823529
+  },
+  "n": {
+   "1 above the cap": 97,
+   "3 down to 4 cm above the grasp height": 24,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 13,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 10,
+   "7 lift (bottle bottom 5 cm above the box rim)": 40,
+   "8 over the box": 67,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 14,
+   "10 lower into the box": 33,
+   "12 lift away": 34
+  }
+ },
+ "B4": {
+  "ckpt": "runs/B4/last.pt",
+  "rule": "fixed",
+  "K": 20,
+  "overall": 0.9819277108433735,
+  "phases": {
+   "1 above the cap": 1.0,
+   "3 down to 4 cm above the grasp height": 1.0,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 1.0,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 1.0,
+   "7 lift (bottle bottom 5 cm above the box rim)": 0.95,
+   "8 over the box": 0.9850746268656716,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 0.7857142857142857,
+   "10 lower into the box": 1.0,
+   "12 lift away": 1.0
+  },
+  "n": {
+   "1 above the cap": 97,
+   "3 down to 4 cm above the grasp height": 24,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 13,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 10,
+   "7 lift (bottle bottom 5 cm above the box rim)": 40,
+   "8 over the box": 67,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 14,
+   "10 lower into the box": 33,
+   "12 lift away": 34
+  }
+ },
+ "B4ad": {
+  "ckpt": "runs/B4/last.pt",
+  "rule": "adaptive",
+  "move": 0.08,
+  "overall": 0.9668674698795181,
+  "phases": {
+   "1 above the cap": 1.0,
+   "3 down to 4 cm above the grasp height": 1.0,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 1.0,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 1.0,
+   "7 lift (bottle bottom 5 cm above the box rim)": 0.9,
+   "8 over the box": 1.0,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 0.5,
+   "10 lower into the box": 1.0,
+   "12 lift away": 1.0
+  },
+  "n": {
+   "1 above the cap": 97,
+   "3 down to 4 cm above the grasp height": 24,
+   "4 down to 2 cm above the grasp height (look: are the fingers around the cap?)": 13,
+   "5 down to the grasp height (adjust with  a 0 0 -1  if the pads are still above the cap)": 10,
+   "7 lift (bottle bottom 5 cm above the box rim)": 40,
+   "8 over the box": 67,
+   "9 lower to 2 cm above the rim -- CHECK ALIGNMENT, adjust with  a dx dy 0  (0.5 cm steps)": 14,
+   "10 lower into the box": 33,
+   "12 lift away": 34
+  }
+ }
+}

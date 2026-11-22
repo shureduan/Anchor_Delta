@@ -1,0 +1,37 @@
+{
+ "ckpt": "runs/B/last.pt",
+ "mode": "B",
+ "ensemble": 1,
+ "rule": "dense",
+ "K": null,
+ "move": null,
+ "n": 1,
+ "success": 0.0,
+ "wilson95": [
+  0.0,
+  0.7934567085261071
+ ],
+ "encodes_per_step": 1.0,
+ "encode_ms": 9.717583539895713,
+ "head_ms": 1.5387500170618296,
+ "policy_ms_per_step": 12.567169773974456,
+ "mean_steps": 400.0,
+ "episodes": [
+  {
+   "seed": 100002,
+   "success": false,
+   "encodes": 400,
+   "steps": 400,
+   "released": false,
+   "info": {
+    "rel": [
+     0.1472,
+     -0.0127,
+     -0.0061
+    ],
+    "tilt_deg": 5.125111029168643,
+    "bottle_z": -0.031168560340963346
+   }
+  }
+ ]
+}

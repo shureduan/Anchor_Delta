@@ -1,0 +1,21 @@
+# Robot-side env. Kept separate from the policy env on purpose:
+# kortex_api 2.6 needs protobuf 3.5.1, which only works on Python <= 3.9.
+# conda env create -f real/environment.yml
+# then install the Kortex wheel (kortex_api-2.6.0.post3-py3-none-any.whl from Kinova's release page):
+#   pip install kortex_api-2.6.0.post3-py3-none-any.whl
+name: delta-kinova
+channels: [conda-forge]
+dependencies:
+  - python=3.9
+  - pip
+  - numpy<2
+  - pyzmq
+  - gstreamer
+  - gst-plugins-base
+  - gst-plugins-good   # rtspsrc, rtpgstdepay, rtph264depay
+  - gst-libav          # avdec_h264
+  - mpg123
+  - pygobject
+  - pip:
+      - protobuf==3.5.1
+      - opencv-python-headless<4.11

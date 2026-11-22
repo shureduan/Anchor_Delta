@@ -1,0 +1,821 @@
+{
+ "ckpt": "runs/B2/last.pt",
+ "mode": "B",
+ "ensemble": 1,
+ "rule": "fixed",
+ "K": 5,
+ "move": null,
+ "n": 50,
+ "success": 1.0,
+ "wilson95": [
+  0.9286499658256813,
+  1.0
+ ],
+ "encodes_per_step": 0.20213146439658083,
+ "encode_ms": 9.302520542405546,
+ "head_ms": 1.522354083135724,
+ "policy_ms_per_step": 3.9890559321678465,
+ "mean_steps": 187.6,
+ "episodes": [
+  {
+   "seed": 100000,
+   "success": true,
+   "encodes": 40,
+   "steps": 197,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0007,
+     -0.0007,
+     0.0025
+    ],
+    "tilt_deg": 0.05766593361555673,
+    "bottle_z": -0.02262975860360866
+   }
+  },
+  {
+   "seed": 100001,
+   "success": true,
+   "encodes": 38,
+   "steps": 190,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0002,
+     -0.0046,
+     0.0025
+    ],
+    "tilt_deg": 0.041447014978446974,
+    "bottle_z": -0.022629532765755467
+   }
+  },
+  {
+   "seed": 100002,
+   "success": true,
+   "encodes": 37,
+   "steps": 185,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0012,
+     -0.0023,
+     0.0025
+    ],
+    "tilt_deg": 0.05340786730948738,
+    "bottle_z": -0.02262920620806078
+   }
+  },
+  {
+   "seed": 100003,
+   "success": true,
+   "encodes": 39,
+   "steps": 192,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0007,
+     -0.0011,
+     0.0025
+    ],
+    "tilt_deg": 0.05516196599344658,
+    "bottle_z": -0.022629170841688643
+   }
+  },
+  {
+   "seed": 100004,
+   "success": true,
+   "encodes": 39,
+   "steps": 191,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0037,
+     0.0025,
+     0.0025
+    ],
+    "tilt_deg": 0.04412166912147878,
+    "bottle_z": -0.022629817000504752
+   }
+  },
+  {
+   "seed": 100005,
+   "success": true,
+   "encodes": 37,
+   "steps": 185,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0018,
+     0.0032,
+     0.0025
+    ],
+    "tilt_deg": 0.0493894048301325,
+    "bottle_z": -0.022629214863315733
+   }
+  },
+  {
+   "seed": 100006,
+   "success": true,
+   "encodes": 37,
+   "steps": 185,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0053,
+     -0.0044,
+     0.0025
+    ],
+    "tilt_deg": 0.06114406447739263,
+    "bottle_z": -0.022631178639526045
+   }
+  },
+  {
+   "seed": 100007,
+   "success": true,
+   "encodes": 36,
+   "steps": 179,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0024,
+     0.003,
+     0.0025
+    ],
+    "tilt_deg": 0.0577752349287306,
+    "bottle_z": -0.02263045142409766
+   }
+  },
+  {
+   "seed": 100008,
+   "success": true,
+   "encodes": 37,
+   "steps": 184,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0021,
+     -0.0019,
+     0.0025
+    ],
+    "tilt_deg": 0.05720732281213841,
+    "bottle_z": -0.022628974150824932
+   }
+  },
+  {
+   "seed": 100009,
+   "success": true,
+   "encodes": 37,
+   "steps": 182,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0006,
+     -0.0001,
+     0.0025
+    ],
+    "tilt_deg": 0.055642205510464074,
+    "bottle_z": -0.022629212327921127
+   }
+  },
+  {
+   "seed": 100010,
+   "success": true,
+   "encodes": 36,
+   "steps": 176,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0005,
+     0.0027,
+     0.0025
+    ],
+    "tilt_deg": 0.05951702628955631,
+    "bottle_z": -0.02263001895136735
+   }
+  },
+  {
+   "seed": 100011,
+   "success": true,
+   "encodes": 37,
+   "steps": 182,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0024,
+     -0.0004,
+     0.0025
+    ],
+    "tilt_deg": 0.06838470114890856,
+    "bottle_z": -0.02262940417614317
+   }
+  },
+  {
+   "seed": 100012,
+   "success": true,
+   "encodes": 38,
+   "steps": 188,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0027,
+     0.004,
+     0.0025
+    ],
+    "tilt_deg": 0.07778192165629055,
+    "bottle_z": -0.022631310737453985
+   }
+  },
+  {
+   "seed": 100013,
+   "success": true,
+   "encodes": 37,
+   "steps": 185,
+   "released": true,
+   "info": {
+    "rel": [
+     0.004,
+     -0.0008,
+     0.0025
+    ],
+    "tilt_deg": 0.06697910139446156,
+    "bottle_z": -0.02263086748002981
+   }
+  },
+  {
+   "seed": 100014,
+   "success": true,
+   "encodes": 38,
+   "steps": 187,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0011,
+     -0.0016,
+     0.0025
+    ],
+    "tilt_deg": 0.04402797865563977,
+    "bottle_z": -0.022628573918704757
+   }
+  },
+  {
+   "seed": 100015,
+   "success": true,
+   "encodes": 40,
+   "steps": 198,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0033,
+     0.0016,
+     0.0025
+    ],
+    "tilt_deg": 0.05143622457675458,
+    "bottle_z": -0.02262965110466057
+   }
+  },
+  {
+   "seed": 100016,
+   "success": true,
+   "encodes": 38,
+   "steps": 188,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0044,
+     -0.0054,
+     0.0025
+    ],
+    "tilt_deg": 0.08342186484820209,
+    "bottle_z": -0.022632417247285524
+   }
+  },
+  {
+   "seed": 100017,
+   "success": true,
+   "encodes": 39,
+   "steps": 191,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0034,
+     -0.0001,
+     0.0025
+    ],
+    "tilt_deg": 0.06176820964218411,
+    "bottle_z": -0.02262947917305299
+   }
+  },
+  {
+   "seed": 100018,
+   "success": true,
+   "encodes": 38,
+   "steps": 187,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0013,
+     0.0008,
+     0.0025
+    ],
+    "tilt_deg": 0.061314059144183926,
+    "bottle_z": -0.022628838890361033
+   }
+  },
+  {
+   "seed": 100019,
+   "success": true,
+   "encodes": 36,
+   "steps": 180,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0011,
+     -0.0002,
+     0.0025
+    ],
+    "tilt_deg": 0.04898187261810429,
+    "bottle_z": -0.022628930393968245
+   }
+  },
+  {
+   "seed": 100020,
+   "success": true,
+   "encodes": 36,
+   "steps": 179,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0012,
+     0.0009,
+     0.0025
+    ],
+    "tilt_deg": 0.019775063824003083,
+    "bottle_z": -0.02262822573673028
+   }
+  },
+  {
+   "seed": 100021,
+   "success": true,
+   "encodes": 41,
+   "steps": 202,
+   "released": true,
+   "info": {
+    "rel": [
+     0.001,
+     -0.0038,
+     0.0025
+    ],
+    "tilt_deg": 0.08552449885336154,
+    "bottle_z": -0.022630791425566017
+   }
+  },
+  {
+   "seed": 100022,
+   "success": true,
+   "encodes": 40,
+   "steps": 198,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0023,
+     -0.0012,
+     0.0025
+    ],
+    "tilt_deg": 0.036306355897473636,
+    "bottle_z": -0.022628861244773594
+   }
+  },
+  {
+   "seed": 100023,
+   "success": true,
+   "encodes": 37,
+   "steps": 181,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0014,
+     0.0007,
+     0.0025
+    ],
+    "tilt_deg": 0.04693696559324475,
+    "bottle_z": -0.02262929927896148
+   }
+  },
+  {
+   "seed": 100024,
+   "success": true,
+   "encodes": 38,
+   "steps": 188,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0031,
+     -0.005,
+     0.0025
+    ],
+    "tilt_deg": 0.06067575540934158,
+    "bottle_z": -0.022630569535882786
+   }
+  },
+  {
+   "seed": 100025,
+   "success": true,
+   "encodes": 39,
+   "steps": 195,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0014,
+     0.0029,
+     0.0025
+    ],
+    "tilt_deg": 0.05243823263705972,
+    "bottle_z": -0.02262939412888092
+   }
+  },
+  {
+   "seed": 100026,
+   "success": true,
+   "encodes": 39,
+   "steps": 191,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0046,
+     -0.0007,
+     0.0025
+    ],
+    "tilt_deg": 0.058091050436702284,
+    "bottle_z": -0.022630309550771166
+   }
+  },
+  {
+   "seed": 100027,
+   "success": true,
+   "encodes": 37,
+   "steps": 182,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0005,
+     0.005,
+     0.0025
+    ],
+    "tilt_deg": 0.028174502021672165,
+    "bottle_z": -0.022628968563756662
+   }
+  },
+  {
+   "seed": 100028,
+   "success": true,
+   "encodes": 36,
+   "steps": 177,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0001,
+     -0.0045,
+     0.0025
+    ],
+    "tilt_deg": 0.07204195552175359,
+    "bottle_z": -0.022630091975045178
+   }
+  },
+  {
+   "seed": 100029,
+   "success": true,
+   "encodes": 37,
+   "steps": 183,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.005,
+     0.0015,
+     0.0025
+    ],
+    "tilt_deg": 0.05604798884470287,
+    "bottle_z": -0.02263109238793686
+   }
+  },
+  {
+   "seed": 100030,
+   "success": true,
+   "encodes": 37,
+   "steps": 185,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0047,
+     0.0003,
+     0.0025
+    ],
+    "tilt_deg": 0.05581580611051576,
+    "bottle_z": -0.02263065921872529
+   }
+  },
+  {
+   "seed": 100031,
+   "success": true,
+   "encodes": 39,
+   "steps": 193,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0018,
+     0.0001,
+     0.0025
+    ],
+    "tilt_deg": 0.05554933493096279,
+    "bottle_z": -0.022629508301947047
+   }
+  },
+  {
+   "seed": 100032,
+   "success": true,
+   "encodes": 36,
+   "steps": 178,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0008,
+     0.004,
+     0.0025
+    ],
+    "tilt_deg": 0.04187474968675003,
+    "bottle_z": -0.02262985794607506
+   }
+  },
+  {
+   "seed": 100033,
+   "success": true,
+   "encodes": 38,
+   "steps": 187,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0033,
+     -0.0005,
+     0.0025
+    ],
+    "tilt_deg": 0.06306381526099626,
+    "bottle_z": -0.022629336267082308
+   }
+  },
+  {
+   "seed": 100034,
+   "success": true,
+   "encodes": 38,
+   "steps": 186,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0016,
+     0.0017,
+     0.0025
+    ],
+    "tilt_deg": 0.03692671823915662,
+    "bottle_z": -0.022628900554811284
+   }
+  },
+  {
+   "seed": 100035,
+   "success": true,
+   "encodes": 40,
+   "steps": 197,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0012,
+     0.0009,
+     0.0025
+    ],
+    "tilt_deg": 0.04338355510016262,
+    "bottle_z": -0.022628334995147454
+   }
+  },
+  {
+   "seed": 100036,
+   "success": true,
+   "encodes": 36,
+   "steps": 178,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0042,
+     0.0003,
+     0.0025
+    ],
+    "tilt_deg": 0.03445909548092368,
+    "bottle_z": -0.02262990964486726
+   }
+  },
+  {
+   "seed": 100037,
+   "success": true,
+   "encodes": 37,
+   "steps": 184,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0004,
+     -0.0022,
+     0.0025
+    ],
+    "tilt_deg": 0.07037368297758924,
+    "bottle_z": -0.02263003465107445
+   }
+  },
+  {
+   "seed": 100038,
+   "success": true,
+   "encodes": 38,
+   "steps": 187,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0024,
+     0.0024,
+     0.0025
+    ],
+    "tilt_deg": 0.038434947340776536,
+    "bottle_z": -0.022629425074174755
+   }
+  },
+  {
+   "seed": 100039,
+   "success": true,
+   "encodes": 40,
+   "steps": 198,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0033,
+     -0.0004,
+     0.0025
+    ],
+    "tilt_deg": 0.05403303583371953,
+    "bottle_z": -0.0226304313797326
+   }
+  },
+  {
+   "seed": 100040,
+   "success": true,
+   "encodes": 39,
+   "steps": 193,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0012,
+     0.0043,
+     0.0025
+    ],
+    "tilt_deg": 0.046249823297871896,
+    "bottle_z": -0.022629995538189243
+   }
+  },
+  {
+   "seed": 100041,
+   "success": true,
+   "encodes": 38,
+   "steps": 187,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0026,
+     0.0002,
+     0.0025
+    ],
+    "tilt_deg": 0.0441855732991133,
+    "bottle_z": -0.022629641384075073
+   }
+  },
+  {
+   "seed": 100042,
+   "success": true,
+   "encodes": 38,
+   "steps": 188,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0028,
+     -0.0011,
+     0.0025
+    ],
+    "tilt_deg": 0.031106677698022785,
+    "bottle_z": -0.022628934841810354
+   }
+  },
+  {
+   "seed": 100043,
+   "success": true,
+   "encodes": 37,
+   "steps": 183,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0013,
+     -0.0024,
+     0.0025
+    ],
+    "tilt_deg": 0.060179811853688155,
+    "bottle_z": -0.02262928537321872
+   }
+  },
+  {
+   "seed": 100044,
+   "success": true,
+   "encodes": 37,
+   "steps": 184,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0015,
+     0.0041,
+     0.0025
+    ],
+    "tilt_deg": 0.07487714642358764,
+    "bottle_z": -0.022631133639018825
+   }
+  },
+  {
+   "seed": 100045,
+   "success": true,
+   "encodes": 40,
+   "steps": 200,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.002,
+     0.0002,
+     0.0025
+    ],
+    "tilt_deg": 0.06380684702459337,
+    "bottle_z": -0.0226297798313411
+   }
+  },
+  {
+   "seed": 100046,
+   "success": true,
+   "encodes": 36,
+   "steps": 180,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0054,
+     -0.0008,
+     0.0025
+    ],
+    "tilt_deg": 0.0631643721573674,
+    "bottle_z": -0.02263137347566421
+   }
+  },
+  {
+   "seed": 100047,
+   "success": true,
+   "encodes": 39,
+   "steps": 195,
+   "released": true,
+   "info": {
+    "rel": [
+     -0.0023,
+     0.0005,
+     0.0025
+    ],
+    "tilt_deg": 0.04613340814932732,
+    "bottle_z": -0.022628675105958628
+   }
+  },
+  {
+   "seed": 100048,
+   "success": true,
+   "encodes": 40,
+   "steps": 196,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0003,
+     0.0034,
+     0.0025
+    ],
+    "tilt_deg": 0.04497720480291816,
+    "bottle_z": -0.0226292827547748
+   }
+  },
+  {
+   "seed": 100049,
+   "success": true,
+   "encodes": 39,
+   "steps": 193,
+   "released": true,
+   "info": {
+    "rel": [
+     0.0003,
+     -0.0012,
+     0.0025
+    ],
+    "tilt_deg": 0.06311321933304075,
+    "bottle_z": -0.022629990523509568
+   }
+  }
+ ]
+}

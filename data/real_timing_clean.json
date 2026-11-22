@@ -1,0 +1,101 @@
+{
+ "20261122_111434": {
+  "note": "L1 A4 r1",
+  "ckpt": "runs/A4/last.pt",
+  "steps": 209,
+  "encodes": 209,
+  "ms_per_step": 8.976420408792116,
+  "ms_encode_step": 8.963957894593477,
+  "ms_head_step": null,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 22.931948944739105
+ },
+ "20261122_111746": {
+  "note": "L1 B4K20 r1",
+  "ckpt": "runs/B4/last.pt",
+  "steps": 205,
+  "encodes": 11,
+  "ms_per_step": 1.5641530203383143,
+  "ms_encode_step": 9.351832792162895,
+  "ms_head_step": 1.130603952333331,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 5.349336960920837
+ },
+ "20261122_112006": {
+  "note": "L1 B4ad r1",
+  "ckpt": "runs/B4/last.pt",
+  "steps": 218,
+  "encodes": 12,
+  "ms_per_step": 1.5559174395978042,
+  "ms_encode_step": 9.222375112585723,
+  "ms_head_step": 1.1252504773437977,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 5.129509958985407
+ },
+ "20261122_113511": {
+  "note": "L2 A4 v1",
+  "ckpt": "runs/A4/last.pt",
+  "steps": 195,
+  "encodes": 195,
+  "ms_per_step": 8.974292907768335,
+  "ms_encode_step": 8.985999971628189,
+  "ms_head_step": null,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 22.61465945137808
+ },
+ "20261122_113902": {
+  "note": "L2 B4K20 v1",
+  "ckpt": "runs/B4/last.pt",
+  "steps": 190,
+  "encodes": 10,
+  "ms_per_step": 1.6501344507560134,
+  "ms_encode_step": 9.318688069470227,
+  "ms_head_step": 1.182791544124484,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 5.265842992077141
+ },
+ "20261122_114154": {
+  "note": "L2 B4ad v1",
+  "ckpt": "runs/B4/last.pt",
+  "steps": 189,
+  "encodes": 10,
+  "ms_per_step": 1.6816239717795893,
+  "ms_encode_step": 9.413396124728024,
+  "ms_head_step": 1.2118341401219368,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 5.78889088143432
+ },
+ "20261122_115909": {
+  "note": "L3 A5 v1",
+  "ckpt": "runs/A5/last.pt",
+  "steps": 191,
+  "encodes": 191,
+  "ms_per_step": 8.951885302682744,
+  "ms_encode_step": 8.975709090009332,
+  "ms_head_step": null,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 23.385718580657198
+ },
+ "20261122_123258": {
+  "note": "L3 B5K20 v1",
+  "ckpt": "runs/B5/last.pt",
+  "steps": 191,
+  "encodes": 10,
+  "ms_per_step": 1.775136555140321,
+  "ms_encode_step": 9.749083430506289,
+  "ms_head_step": 1.2093749828636646,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 4.377799076930234
+ },
+ "20261122_123533": {
+  "note": "L3 B5ad v1",
+  "ckpt": "runs/B5/last.pt",
+  "steps": 191,
+  "encodes": 10,
+  "ms_per_step": 1.5918894217432482,
+  "ms_encode_step": 9.388729115016758,
+  "ms_head_step": 1.1490408796817064,
+  "anchors_reproduced": true,
+  "ms_logged_in_lab": 2.9624173008100523
+ }
+}

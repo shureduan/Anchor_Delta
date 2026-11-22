@@ -1,0 +1,101 @@
+{
+ "L1 A": {
+  "run": "20261122_111434",
+  "version": "v4",
+  "success": true,
+  "steps": 209,
+  "encodes": 209,
+  "ms_per_step": 8.98,
+  "visual_bytes_dense": 2438462,
+  "visual_bytes_stored": 2438462,
+  "storage_ratio": 1.0
+ },
+ "L1 B K20": {
+  "run": "20261122_111746",
+  "version": "v4",
+  "success": true,
+  "steps": 205,
+  "encodes": 11,
+  "ms_per_step": 1.56,
+  "visual_bytes_dense": 2498638,
+  "visual_bytes_stored": 137678,
+  "storage_ratio": 18.1
+ },
+ "L1 B adaptive": {
+  "run": "20261122_112006",
+  "version": "v4",
+  "success": true,
+  "steps": 218,
+  "encodes": 12,
+  "ms_per_step": 1.56,
+  "visual_bytes_dense": 2605870,
+  "visual_bytes_stored": 147003,
+  "storage_ratio": 17.7
+ },
+ "L2 A": {
+  "run": "20261122_113511",
+  "version": "v4",
+  "success": true,
+  "steps": 195,
+  "encodes": 195,
+  "ms_per_step": 8.97,
+  "visual_bytes_dense": 2215227,
+  "visual_bytes_stored": 2215227,
+  "storage_ratio": 1.0
+ },
+ "L2 B K20": {
+  "run": "20261122_113902",
+  "version": "v4",
+  "success": true,
+  "steps": 190,
+  "encodes": 10,
+  "ms_per_step": 1.65,
+  "visual_bytes_dense": 2174139,
+  "visual_bytes_stored": 118000,
+  "storage_ratio": 18.4
+ },
+ "L2 B adaptive": {
+  "run": "20261122_114154",
+  "version": "v4",
+  "success": true,
+  "steps": 189,
+  "encodes": 10,
+  "ms_per_step": 1.68,
+  "visual_bytes_dense": 2018551,
+  "visual_bytes_stored": 110348,
+  "storage_ratio": 18.3
+ },
+ "L3 A": {
+  "run": "20261122_115909",
+  "version": "v5",
+  "success": true,
+  "steps": 191,
+  "encodes": 191,
+  "ms_per_step": 8.95,
+  "visual_bytes_dense": 2063859,
+  "visual_bytes_stored": 2063859,
+  "storage_ratio": 1.0
+ },
+ "L3 B K20": {
+  "run": "20261122_123258",
+  "version": "v5",
+  "success": true,
+  "steps": 191,
+  "encodes": 10,
+  "ms_per_step": 1.78,
+  "visual_bytes_dense": 2161721,
+  "visual_bytes_stored": 116480,
+  "storage_ratio": 18.6
+ },
+ "L3 B adaptive": {
+  "run": "20261122_123533",
+  "version": "v5",
+  "success": true,
+  "steps": 191,
+  "encodes": 10,
+  "ms_per_step": 1.59,
+  "visual_bytes_dense": 2190312,
+  "visual_bytes_stored": 117675,
+  "storage_ratio": 18.6
+ }
+}

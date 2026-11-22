@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anchor + Delta: Do Robot Policies Need to See Every Frame?</title>
+  <meta name="description" content="A visuomotor policy that encodes the wrist camera only at sparse anchors and uses kinematic deltas in between, trained in simulation and deployed zero-shot on a Kinova Gen3.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; color: #2b2b2b; }
+    .title, .subtitle, h2, h3 { font-family: 'Google Sans', 'Noto Sans', sans-serif; }
+    .hero .title.is-1 { font-size: 2.6rem; line-height: 1.2; }
+    .section { padding: 2.2rem 1.5rem; }
+    h2.title.is-3 { border-bottom: 1px solid #e5e5e5; padding-bottom: .4rem; margin-bottom: 1.2rem; }
+    .content p { text-align: justify; }
+    .media-box { border-radius: 8px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,.12); background: #111; }
+    .media-box img { display: block; width: 100%; }
+    .cap { font-size: .88rem; color: #666; margin-top: .45rem; text-align: center; }
+    .grid3 { display: grid; grid-template-columns: 90px repeat(3, 1fr); gap: 10px; align-items: center; }
+    .grid3 .hdr { font-weight: 600; text-align: center; font-family: 'Google Sans', sans-serif; }
+    .grid3 .row { font-weight: 600; text-align: right; padding-right: 6px; font-size: .95rem; }
+    .grid3 .row small { display: block; font-weight: 400; color: #888; }
+    .badge { display: inline-block; background: #f4f6fb; border: 1px solid #dfe4f0; border-radius: 999px; padding: .35rem .9rem; margin: .25rem; font-size: .95rem; }
+    .badge b { color: #c0392b; }
+    .placeholder { border: 2px dashed #c9c9c9; border-radius: 10px; padding: 3.5rem 1rem; text-align: center; color: #999; background: #fafafa; }
+    table.table td, table.table th { text-align: center; vertical-align: middle; }
+    .tldr { background: #f7f9fc; border-left: 4px solid #4c72b0; padding: .9rem 1.1rem; border-radius: 4px; }
+    pre.bib { background: #f6f6f6; font-size: .85rem; }
+    .c-red { color: #d9534f; font-weight: 600; } .c-ora { color: #e08e0b; font-weight: 600; } .c-blue { color: #4c72b0; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-1">Anchor + Delta: Do Robot Policies<br>Need to See Every Frame?</h1>
+      <p class="subtitle is-5" style="margin-top:.8rem;color:#555">Sparse visual anchors and kinematic deltas for a wrist-camera manipulation policy,<br>trained in simulation and deployed zero-shot on a Kinova Gen3</p>
+      <div class="buttons is-centered" style="margin-top:1.2rem">
+        <a class="button is-dark is-rounded" href="https://github.com/shureduan/Anchor_Delta">Code</a>
+        <a class="button is-dark is-rounded" href="https://github.com/shureduan/Anchor_Delta/tree/main/report">Report</a>
+        <a class="button is-dark is-rounded" href="#bibtex">BibTeX</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <div class="media-box"><img src="media/gif/b_l3_r1_15x.gif" alt="real robot run with algorithm overlay" loading="lazy"></div>
+    <p class="cap">A real zero-shot run of policy B (15x speed). Top: phone view and wrist camera with the image the policy is currently using (the cached anchor). Bottom: wrist depth, top-view tool path with the anchor, the delta and the 1 s plan, and timelines of anchor age, delta and image encodes.</p>
+    <div class="tldr" style="margin-top:1.2rem">
+      <b>TL;DR.</b> A visuomotor policy normally re-encodes the camera image at every control step. We encode the wrist image only at sparse <i>anchors</i>, and between anchors we give the policy the hand's motion since the anchor (the <i>delta</i>), computed from forward kinematics and the gripper sensor. On a real Kinova Gen3 picking a bottle and placing it into a box, this completes the same task as dense encoding with:
+      <div class="has-text-centered" style="margin-top:.6rem">
+        <span class="badge"><b>~5 %</b> of the image encodes</span>
+        <span class="badge"><b>5.6x</b> less policy compute per step</span>
+        <span class="badge"><b>18x</b> less stored visual data</span>
+        <span class="badge"><b>zero-shot</b> sim-to-real</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Abstract</h2>
+    <p>Robot manipulation videos are highly redundant: between a few events such as grasping and releasing, consecutive frames carry little new information. We ask whether a visuomotor policy really needs to encode the camera image at every control step. We compare two policies that share the same network, data and training: <b>A</b> encodes every wrist-camera frame, and <b>B</b> encodes a frame only at sparse anchors and between anchors receives a low-dimensional delta from robot proprioception (end-effector displacement since the anchor, gripper state at the anchor, anchor age). Anchors are refreshed every K steps or adaptively, on gripper events and after large hand motion, using proprioception only. Both policies are trained by behaviour cloning in a MuJoCo replica of a real Kinova Gen3 cell, with class-map-driven appearance randomisation, and are deployed zero-shot. In simulation, B matches A (30/30 vs. 29/30). On the real robot, B completes the pick-and-place in all tested layouts while running the image encoder about once every 20 steps, reducing policy compute from 9.0 to 1.6 ms per step and stored visual data by about 18x. We also analyse the sim-to-real failures we encountered and show that they came from appearance and from an unobservable expert timer, not from encoding fewer images.</p>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Method</h2>
+    <div class="media-box" style="background:#fff"><img src="media/figures/method_overview.png" alt="method overview"></div>
+    <p class="cap">(a) Dense encoding (A) runs the image encoder at every step; anchor + delta (B) encodes at anchors, caches the feature and feeds a kinematic delta in between. (b) One control step of the policy. (c) The anchor rule uses proprioception only.</p>
+    <p style="margin-top:1rem">Both policies use a ResNet-18 image encoder and a small MLP head that outputs a chunk of 10 future steps (tool-position offsets and gripper logits) at 10 Hz. Policy <span class="c-red">A</span> encodes the current frame \(z_t = E_\theta(I_t)\) at every step. Policy <span class="c-ora">B</span> encodes only at anchor steps \(t_a\), caches \(z_a = E_\theta(I_{t_a})\), and conditions on a delta computed from robot sensors only:</p>
+    $$\Delta_t = \Big[\tfrac{p_t - p_{t_a}}{5\,\mathrm{cm}},\; g_{t_a},\; \tfrac{t - t_a}{50}\Big], \qquad \{\hat o_{t+k}, \hat c_{t+k}\}_{k=0}^{9} = \pi_\phi\big(z_a,\, q_t,\, \Delta_t\big),$$
+    <p>where \(p_t\) is the tool position from forward kinematics, \(g\) the gripper state from its position sensor, and \(q_t\) the current proprioception. A new anchor is taken with a fixed rule (\(t \bmod K = 0\), \(K=20\)) or an adaptive rule that fires at the episode start, when the gripper opens or closes, or when \(\lVert p_t - p_{t_a}\rVert > 8\) cm. The image is never used to decide when to re-encode. Commands are obtained by averaging the overlapping predictions of recent chunks (temporal ensembling). Training uses \(\mathcal L = \lVert \hat o - o^\ast\rVert_1 + 0.1\,\mathrm{BCE}(\hat c, c^\ast)\); B is trained on mixed anchor ages so that the anchor age cannot be used as a clock.</p>
+  </div>
+</section>
+
+<section class="section" id="sim">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Simulation</h2>
+    <p>A MuJoCo replica of the real cell (wrist camera with the real intrinsics and mount, measured bottle and box, table height from depth) provides scripted-expert demonstrations and closed-loop evaluation on unseen scenes. Below, the three policies run on the same randomised scene.</p>
+    <div class="media-box"><img src="media/gif/sim_100011_3x.gif" alt="simulation rollouts" loading="lazy"></div>
+    <p class="cap">Simulation, same scene for A (dense) | B (fixed K=20) | B (adaptive), 3x speed. Bottom row: the wrist camera the policy sees; red frames mark image encodes.</p>
+    <table class="table is-fullwidth is-hoverable" style="margin-top:1rem">
+      <thead><tr><th>model version</th><th>A dense</th><th>B fixed K=20</th><th>B adaptive 8 cm</th><th>ms / step (A &rarr; B)</th></tr></thead>
+      <tbody>
+        <tr><td>v2 (n = 50)</td><td>50/50</td><td>49/50</td><td>48/50</td><td>11.5 &rarr; 2.0</td></tr>
+        <tr><td>v4 (n = 50)</td><td>49/50</td><td>46/50</td><td>47/50</td><td>9.4 &rarr; 1.6</td></tr>
+        <tr><td><b>v5 (n = 30)</b></td><td><b>29/30</b></td><td><b>30/30</b></td><td><b>30/30</b></td><td><b>9.6 &rarr; 1.6</b></td></tr>
+      </tbody>
+    </table>
+    <p class="cap">Closed-loop success on unseen scenes. B fixed-400 (a single anchor at the start) fails 0/50, so anchors must be refreshed.</p>
+  </div>
+</section>
+
+<section class="section" id="real">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Real robot: three policies, three layouts</h2>
+    <p>Kinova Gen3 with a Robotiq 2F-85 gripper and the wrist vision module, no real training data. Each cell is a full episode with the per-frame algorithm state overlaid (15x speed).</p>
+    <div class="grid3">
+      <div></div><div class="hdr">A &middot; dense</div><div class="hdr">B &middot; fixed K=20</div><div class="hdr">B &middot; adaptive</div>
+      <div class="row">L1<small>v4</small></div>
+      <div class="media-box"><img src="media/gif/a_l1_r1_15x.gif" loading="lazy"></div>
+      <div class="media-box"><img src="media/gif/b_l1_r1_15x.gif" loading="lazy"></div>
+      <div class="media-box"><img src="media/gif/c_l1_r1_15x.gif" loading="lazy"></div>
+      <div class="row">L2<small>v4</small></div>
+      <div class="media-box"><img src="media/gif/a_l2_r1_15x.gif" loading="lazy"></div>
+      <div class="media-box"><img src="media/gif/b_l2_r1_15x.gif" loading="lazy"></div>
+      <div class="media-box"><img src="media/gif/c_l2_r1_15x.gif" loading="lazy"></div>
+      <div class="row">L3<small>v5</small></div>
+      <div class="media-box"><img src="media/gif/a_l3_r1_15x.gif" loading="lazy"></div>
+      <div class="media-box"><img src="media/gif/b_l3_r1_15x.gif" loading="lazy"></div>
+      <div class="media-box"><img src="media/gif/c_l3_r1_15x.gif" loading="lazy"></div>
+    </div>
+    <table class="table is-fullwidth is-hoverable" style="margin-top:1.4rem">
+      <thead><tr><th></th><th>A dense</th><th>B fixed K=20</th><th>B adaptive</th></tr></thead>
+      <tbody>
+        <tr><td>success (grid)</td><td>3/3</td><td>3/3</td><td>3/3</td></tr>
+        <tr><td>image encodes / episode</td><td>191&ndash;209 (100 %)</td><td>10&ndash;11 (5.1&ndash;5.4 %)</td><td>10&ndash;12 (5.3&ndash;5.5 %)</td></tr>
+        <tr><td>policy compute (idle M4 GPU)</td><td>8.95&ndash;8.98 ms</td><td>1.56&ndash;1.78 ms</td><td>1.56&ndash;1.68 ms</td></tr>
+        <tr><td>stored visual data / episode</td><td>2.1&ndash;2.4 MB</td><td>117&ndash;138 kB</td><td>110&ndash;147 kB</td></tr>
+      </tbody>
+    </table>
+    <p class="cap">Compute was re-measured by replaying each run's exact inputs on an idle GPU (the replay reproduces the logged anchor schedule exactly). Stored data = policy-input frames a method has to keep, plus 20 bytes per step of delta for B.</p>
+    <div class="media-box" style="background:#fff;margin-top:1rem"><img src="media/figures/fig_real_grid_cost.png" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="section" id="delta">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">What B computes between anchors</h2>
+    <p>Between anchors the camera is not encoded. The policy reuses the cached anchor feature and receives the delta, the tool displacement since the anchor from forward kinematics, together with the gripper state at the anchor and the anchor age. The animation shows the live wrist RGB-D, the cached anchor image the policy is actually using, and the delta computed at every step.</p>
+    <div class="media-box"><img src="media/gif/delta_rgbd_b_l3_r1.gif" loading="lazy"></div>
+    <p class="cap">Real run, B fixed K=20 (2x speed). Left: live wrist RGB and depth (top) and the cached anchor image (bottom). Right: delta = tool now &minus; tool at anchor, from FK.</p>
+    <div class="media-box" style="background:#fff;margin-top:1rem"><img src="media/figures/what_B_sees_l3.jpg" loading="lazy"></div>
+    <p class="cap">Four moments of the same run: the current wrist view (top), the anchor image the policy uses (middle) and the kinematic delta (bottom).</p>
+  </div>
+</section>
+
+<section class="section" id="anchors">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">When to take a new anchor</h2>
+    <p>The fixed rule re-encodes every 20 steps. The adaptive rule re-encodes when the hand has moved more than 8 cm since the anchor, or when the gripper sensor reports a state change. Both rules use proprioception only. On the real robot they lead to 10&ndash;12 encodes per ~190-step episode, placed at different moments.</p>
+    <div class="media-box"><img src="media/gif/anchor_rules_l3.gif" loading="lazy"></div>
+    <p class="cap">Real runs on layout L3 (2x speed). Left: fixed K=20, anchor age counting to 20. Right: adaptive, with the distance-since-anchor bar against the 8 cm threshold and the gripper state; each encode is labelled with its trigger.</p>
+  </div>
+</section>
+
+<section class="section" id="analysis">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">What made sim-to-real work</h2>
+    <p><b>Appearance, not geometry.</b> Matching the simulator's colours to the real scene made real-frame agreement <i>worse</i>. A region-swap test showed that the gap came from the table background and the held bottle, not the box colour. Class-map-driven randomisation (random table textures with glare, cables and stains, and separate colour gains for bottle, box and gripper) raised agreement with real demonstrations from 77&ndash;86 % to 97&ndash;98 %.</p>
+    <div class="media-box" style="background:#fff"><img src="media/figures/fig_real_phase_versions.png" loading="lazy"></div>
+    <p class="cap">Offline check on recorded real demonstrations: fraction of frames where the predicted 1 s motion points within 30&deg; of where the scripted controller went, per task phase and model version.</p>
+    <p style="margin-top:1.2rem"><b>Observable gripper decisions.</b> Two real failure modes of the v4 models came from the gripper. (i) The expert waited a fixed 0.3 s before closing, which the policy cannot observe, so it kept predicting "close in about six steps" and on one layout never closed. (ii) The policy judged whether it was holding the bottle from the image, not from the gripper sensor, and re-opened after grasping when the real post-grasp view was encoded. The v5 models use an expert that closes and releases on arrival, and erase the gripper fingers during training. They hold on every layout, including the one where v4 failed.</p>
+    <div class="columns">
+      <div class="column"><div class="media-box" style="background:#fff"><img src="media/figures/fig_grasp_timing_v4_vs_v5.png" loading="lazy"></div>
+        <p class="cap">Close logits at the grasp pose on real frames: v4 never counts down; v5 closes immediately.</p></div>
+    </div>
+    <div class="media-box" style="background:#fff"><img src="media/figures/fig_post_grasp_reopen_v4_vs_v5.png" loading="lazy"></div>
+    <p class="cap">Same layout, policy B: with v4 the anchor encoded right after the grasp (step 80) flips the gripper decision to "open"; with v5 it keeps holding.</p>
+  </div>
+</section>
+
+<section class="section" id="limits">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Scope</h2>
+    <p>Real-robot results cover three in-distribution layouts with one training seed per model. The 3x3 grid shows v4 models on L1/L2 and v5 models on L3. The benefit of anchor + delta depends on where compute goes: it is large for an image-encoder-dominated policy (5&ndash;6x here) and small for a flow-matching VLA whose denoising dominates (at most 1.24x for SmolVLA in our tests).</p>
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+<pre class="bib"><code>@misc{anchordelta2026,
+  title  = {Anchor + Delta: Do Robot Policies Need to See Every Frame?},
+  year   = {2026},
+  note   = {Project page: https://shureduan.github.io/Anchor_Delta/}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer" style="padding:2rem 1.5rem">
+  <div class="content has-text-centered" style="font-size:.85rem;color:#888">
+    This page uses the layout conventions of the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page template.
+  </div>
+</footer>
+</body>
+</html>

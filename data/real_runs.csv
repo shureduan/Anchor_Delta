@@ -1,0 +1,27 @@
+run,note,layout,policy,rule,model,version,auto,result,success,steps,encodes,enc_frac,full_log,valid_for_main,operator_note,failure_category
+20261122_094943,L1 A4,L1,A,dense,runs/A4|B4 (v4),v4,False,stopped,False,140,140,1.0,False,False,"The robotic arm stopped above the bottle, its position was accurate, but there was no clamping action. Subsequent planning outputted almost no movements.",executor bug: next ReachPose aborted the gripper command (stalled at 5 %); fixed by waiting for the gripper
+20261122_095917,L1 A4 try2,L1,A,dense,runs/A4|B4 (v4),v4,False,done,True,196,196,1.0,False,True,,
+20261122_100229,L1 B4K20,L1,B,fixed,runs/A4|B4 (v4),v4,False,done,True,193,10,0.052,False,True,,
+20261122_100455,L1 B4ad,L1,B,adaptive,runs/A4|B4 (v4),v4,False,done,True,191,9,0.047,False,True,,
+20261122_101256,L2 A4,L2,A,dense,runs/A4|B4 (v4),v4,True,done,True,190,190,1.0,False,True,"success, but the bottle touched the box rim while lowering in (operator, 2026-11-22)",
+20261122_101558,L2 B4K20,L2,B,fixed,runs/A4|B4 (v4),v4,True,done,True,190,10,0.053,False,True,passed close to the box rim but did not touch it (operator),
+20261122_101848,L2 B4ad,L2,B,adaptive,runs/A4|B4 (v4),v4,True,done,True,188,10,0.053,False,True,,
+20261122_103011,L3 A4,L3,A,dense,runs/A4|B4 (v4),v4,True,stopped,False,230,230,1.0,True,False,hovered ~5 cm above the cap (z~0.20) and never closed (operator). Offline: occluding the saturated GREEN marker tape next to the bottle (L1/L2 marker) makes A4 ,v4: hovered ~5 cm above the cap; saturated green marker tape next to the bottle (occlusion test)
+20261122_103409,L3 A4 try2,L3,A,dense,runs/A4|B4 (v4),v4,True,running,,104,104,1.0,True,False,,v4: same hover as 103011 with the green tape in view; stopped by operator
+20261122_103602,L3 A4 try2,L3,A,dense,runs/A4|B4 (v4),v4,True,stopped,False,199,199,1.0,True,True,"reached grasp height (z 0.145, clamped; policy wanted ~0.139) but never closed: stationary elapsed-time deadlock, uniform ensemble gripper logit ~-2 (L1 +0.3, L",v4: stationary gripper deadlock at the grasp pose (hidden 0.3 s expert wait; ensemble logit -2)
+20261122_105054,L3 A4 try3,L3,A,dense,runs/A4/last.pt,v4,True,running,,113,113,1.0,True,False,,executor experiment (grip-commit rule ON): open/close chatter; rule withdrawn
+20261122_111434,L1 A4 r1,L1,A,dense,runs/A4/last.pt,v4,True,done,True,209,209,1.0,True,True,,
+20261122_111535,L1 B4K20 r1,L1,B,fixed,runs/B4/last.pt,v4,True,running,,21,2,0.095,True,False,,stopped by operator after 21 steps (high above the table); reason not recorded
+20261122_111746,L1 B4K20 r1,L1,B,fixed,runs/B4/last.pt,v4,True,done,True,205,11,0.054,True,True,,
+20261122_112006,L1 B4ad r1,L1,B,adaptive,runs/B4/last.pt,v4,True,done,True,218,12,0.055,True,True,,
+20261122_112203,L1 A4 r2,L1,A,dense,runs/A4/last.pt,v4,True,done,True,206,206,1.0,True,True,,
+20261122_112332,L1 B4K20 r2,L1,B,fixed,runs/B4/last.pt,v4,True,done,False,110,6,0.055,True,True,,v4: re-opened after grasp when the post-grasp real image was encoded (anchor at step 80)
+20261122_112523,L1 B4ad r2,L1,B,adaptive,runs/B4/last.pt,v4,True,done,False,115,13,0.113,True,True,,"v4: re-opened after grasp (post-grasp real image -> open), chatter"
+20261122_113511,L2 A4 v1,L2,A,dense,runs/A4/last.pt,v4,True,done,True,195,195,1.0,True,True,,
+20261122_113623,L2 B4K20 v1,L2,B,fixed,runs/B4/last.pt,v4,True,running,,95,5,0.053,True,False,,"stopped by operator during the lift (bottle held, lifting normally); reason not recorded"
+20261122_113902,L2 B4K20 v1,L2,B,fixed,runs/B4/last.pt,v4,True,done,True,190,10,0.053,True,True,,
+20261122_114154,L2 B4ad v1,L2,B,adaptive,runs/B4/last.pt,v4,True,done,True,189,10,0.053,True,True,,
+20261122_114422,L3 B4K20 v1,L3,B,fixed,runs/B4/last.pt,v4,True,done,False,110,6,0.055,True,True,,v4: re-opened after grasp when the post-grasp real image was encoded (anchor at step 80)
+20261122_115909,L3 A5 v1,L3,A,dense,runs/A5/last.pt,v5,True,done,True,191,191,1.0,True,True,,
+20261122_123258,L3 B5K20 v1,L3,B,fixed,runs/B5/last.pt,v5,True,done,True,191,10,0.052,True,True,,
+20261122_123533,L3 B5ad v1,L3,B,adaptive,runs/B5/last.pt,v5,True,done,True,191,10,0.052,True,True,,

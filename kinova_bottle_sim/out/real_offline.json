@@ -1,0 +1,644 @@
+{
+ "real | A dense": {
+  "dir_cos_median": 0.9831383228302002,
+  "dir_ok_frac": 0.8644710578842316,
+  "grip_agree": 0.957134109001837,
+  "encodes_per_frame": 1.0,
+  "episodes": [
+   {
+    "n_moving": 165,
+    "dir_cos_median": 0.9830049276351929,
+    "dir_ok_frac": 0.8666666666666667,
+    "grip_agree": 0.9565217391304348,
+    "episode": "20261115_224456",
+    "encodes": 299,
+    "frames": 299
+   },
+   {
+    "n_moving": 167,
+    "dir_cos_median": 0.9832717180252075,
+    "dir_ok_frac": 0.8622754491017964,
+    "grip_agree": 0.9577464788732394,
+    "episode": "20261115_224804",
+    "encodes": 284,
+    "frames": 284
+   }
+  ]
+ },
+ "real | B fixed K=20": {
+  "dir_cos_median": 0.989724338054657,
+  "dir_ok_frac": 0.7740337506804573,
+  "grip_agree": 0.9110944933816949,
+  "encodes_per_frame": 0.051457975986277875,
+  "episodes": [
+   {
+    "n_moving": 165,
+    "dir_cos_median": 0.996671199798584,
+    "dir_ok_frac": 0.7636363636363637,
+    "grip_agree": 0.9665551839464883,
+    "episode": "20261115_224456",
+    "encodes": 15,
+    "frames": 299
+   },
+   {
+    "n_moving": 167,
+    "dir_cos_median": 0.98277747631073,
+    "dir_ok_frac": 0.7844311377245509,
+    "grip_agree": 0.8556338028169014,
+    "episode": "20261115_224804",
+    "encodes": 15,
+    "frames": 284
+   }
+  ]
+ },
+ "real | B adaptive 8 cm": {
+  "dir_cos_median": 0.987363338470459,
+  "dir_ok_frac": 0.7799491925240428,
+  "grip_agree": 0.9515874511281737,
+  "encodes_per_frame": 0.03945111492281304,
+  "episodes": [
+   {
+    "n_moving": 165,
+    "dir_cos_median": 0.9950335025787354,
+    "dir_ok_frac": 0.7515151515151515,
+    "grip_agree": 0.9665551839464883,
+    "episode": "20261115_224456",
+    "encodes": 12,
+    "frames": 299
+   },
+   {
+    "n_moving": 167,
+    "dir_cos_median": 0.9796931743621826,
+    "dir_ok_frac": 0.8083832335329342,
+    "grip_agree": 0.9366197183098591,
+    "episode": "20261115_224804",
+    "encodes": 11,
+    "frames": 284
+   }
+  ]
+ },
+ "sim | A dense": {
+  "dir_cos_median": 0.9994873076677322,
+  "dir_ok_frac": 0.9611410368997305,
+  "grip_agree": 0.9902010537160864,
+  "encodes_per_frame": 1.0,
+  "episodes": [
+   {
+    "n_moving": 162,
+    "dir_cos_median": 0.9999674558639526,
+    "dir_ok_frac": 0.9691358024691358,
+    "grip_agree": 0.9906542056074766,
+    "episode": "ep_00480",
+    "encodes": 214,
+    "frames": 214
+   },
+   {
+    "n_moving": 149,
+    "dir_cos_median": 0.9997743964195251,
+    "dir_ok_frac": 0.9664429530201343,
+    "grip_agree": 0.99,
+    "episode": "ep_00481",
+    "encodes": 200,
+    "frames": 200
+   },
+   {
+    "n_moving": 151,
+    "dir_cos_median": 0.9993833303451538,
+    "dir_ok_frac": 0.9602649006622517,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00482",
+    "encodes": 204,
+    "frames": 204
+   },
+   {
+    "n_moving": 139,
+    "dir_cos_median": 0.9999908804893494,
+    "dir_ok_frac": 0.9640287769784173,
+    "grip_agree": 0.9895287958115183,
+    "episode": "ep_00483",
+    "encodes": 191,
+    "frames": 191
+   },
+   {
+    "n_moving": 147,
+    "dir_cos_median": 0.9995143413543701,
+    "dir_ok_frac": 0.9523809523809523,
+    "grip_agree": 0.9899497487437185,
+    "episode": "ep_00484",
+    "encodes": 199,
+    "frames": 199
+   },
+   {
+    "n_moving": 153,
+    "dir_cos_median": 0.9992074966430664,
+    "dir_ok_frac": 0.9411764705882353,
+    "grip_agree": 0.9902439024390244,
+    "episode": "ep_00485",
+    "encodes": 205,
+    "frames": 205
+   },
+   {
+    "n_moving": 149,
+    "dir_cos_median": 0.9999898672103882,
+    "dir_ok_frac": 0.9664429530201343,
+    "grip_agree": 0.9900497512437811,
+    "episode": "ep_00486",
+    "encodes": 201,
+    "frames": 201
+   },
+   {
+    "n_moving": 148,
+    "dir_cos_median": 0.9996791481971741,
+    "dir_ok_frac": 0.9594594594594594,
+    "grip_agree": 0.99,
+    "episode": "ep_00487",
+    "encodes": 200,
+    "frames": 200
+   },
+   {
+    "n_moving": 157,
+    "dir_cos_median": 0.9982084631919861,
+    "dir_ok_frac": 0.9617834394904459,
+    "grip_agree": 0.9904306220095693,
+    "episode": "ep_00488",
+    "encodes": 209,
+    "frames": 209
+   },
+   {
+    "n_moving": 152,
+    "dir_cos_median": 0.9999645948410034,
+    "dir_ok_frac": 0.9671052631578947,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00489",
+    "encodes": 204,
+    "frames": 204
+   },
+   {
+    "n_moving": 139,
+    "dir_cos_median": 0.9998661875724792,
+    "dir_ok_frac": 0.9496402877697842,
+    "grip_agree": 0.9895287958115183,
+    "episode": "ep_00490",
+    "encodes": 191,
+    "frames": 191
+   },
+   {
+    "n_moving": 163,
+    "dir_cos_median": 0.9983804821968079,
+    "dir_ok_frac": 0.9631901840490797,
+    "grip_agree": 0.9907407407407407,
+    "episode": "ep_00491",
+    "encodes": 216,
+    "frames": 216
+   },
+   {
+    "n_moving": 150,
+    "dir_cos_median": 0.9999639987945557,
+    "dir_ok_frac": 0.9666666666666667,
+    "grip_agree": 0.9900990099009901,
+    "episode": "ep_00492",
+    "encodes": 202,
+    "frames": 202
+   },
+   {
+    "n_moving": 164,
+    "dir_cos_median": 0.9995090961456299,
+    "dir_ok_frac": 0.9634146341463414,
+    "grip_agree": 0.9907407407407407,
+    "episode": "ep_00493",
+    "encodes": 216,
+    "frames": 216
+   },
+   {
+    "n_moving": 152,
+    "dir_cos_median": 0.9985987544059753,
+    "dir_ok_frac": 0.9473684210526315,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00494",
+    "encodes": 204,
+    "frames": 204
+   },
+   {
+    "n_moving": 153,
+    "dir_cos_median": 0.999991238117218,
+    "dir_ok_frac": 0.9673202614379085,
+    "grip_agree": 0.9902439024390244,
+    "episode": "ep_00495",
+    "encodes": 205,
+    "frames": 205
+   },
+   {
+    "n_moving": 158,
+    "dir_cos_median": 0.9993933439254761,
+    "dir_ok_frac": 0.9683544303797469,
+    "grip_agree": 0.9904761904761905,
+    "episode": "ep_00496",
+    "encodes": 210,
+    "frames": 210
+   },
+   {
+    "n_moving": 150,
+    "dir_cos_median": 0.9986191987991333,
+    "dir_ok_frac": 0.9533333333333334,
+    "grip_agree": 0.9900990099009901,
+    "episode": "ep_00497",
+    "encodes": 202,
+    "frames": 202
+   },
+   {
+    "n_moving": 163,
+    "dir_cos_median": 0.9999873042106628,
+    "dir_ok_frac": 0.9693251533742331,
+    "grip_agree": 0.9906976744186047,
+    "episode": "ep_00498",
+    "encodes": 215,
+    "frames": 215
+   },
+   {
+    "n_moving": 147,
+    "dir_cos_median": 0.9997565746307373,
+    "dir_ok_frac": 0.9659863945578231,
+    "grip_agree": 0.9899497487437185,
+    "episode": "ep_00499",
+    "encodes": 199,
+    "frames": 199
+   }
+  ]
+ },
+ "sim | B fixed K=20": {
+  "dir_cos_median": 0.99907346367836,
+  "dir_ok_frac": 0.9590325956052826,
+  "grip_agree": 0.9911681551881383,
+  "encodes_per_frame": 0.052361145094201124,
+  "episodes": [
+   {
+    "n_moving": 162,
+    "dir_cos_median": 0.9998195171356201,
+    "dir_ok_frac": 0.9691358024691358,
+    "grip_agree": 0.9906542056074766,
+    "episode": "ep_00480",
+    "encodes": 11,
+    "frames": 214
+   },
+   {
+    "n_moving": 149,
+    "dir_cos_median": 0.9994264245033264,
+    "dir_ok_frac": 0.9798657718120806,
+    "grip_agree": 0.99,
+    "episode": "ep_00481",
+    "encodes": 10,
+    "frames": 200
+   },
+   {
+    "n_moving": 151,
+    "dir_cos_median": 0.9987490773200989,
+    "dir_ok_frac": 0.9668874172185431,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00482",
+    "encodes": 11,
+    "frames": 204
+   },
+   {
+    "n_moving": 139,
+    "dir_cos_median": 0.9999496340751648,
+    "dir_ok_frac": 0.9640287769784173,
+    "grip_agree": 0.9895287958115183,
+    "episode": "ep_00483",
+    "encodes": 10,
+    "frames": 191
+   },
+   {
+    "n_moving": 147,
+    "dir_cos_median": 0.9992562532424927,
+    "dir_ok_frac": 0.9727891156462585,
+    "grip_agree": 0.9899497487437185,
+    "episode": "ep_00484",
+    "encodes": 10,
+    "frames": 199
+   },
+   {
+    "n_moving": 153,
+    "dir_cos_median": 0.9963527321815491,
+    "dir_ok_frac": 0.8300653594771242,
+    "grip_agree": 0.9902439024390244,
+    "episode": "ep_00485",
+    "encodes": 11,
+    "frames": 205
+   },
+   {
+    "n_moving": 149,
+    "dir_cos_median": 0.999961256980896,
+    "dir_ok_frac": 0.9731543624161074,
+    "grip_agree": 0.9900497512437811,
+    "episode": "ep_00486",
+    "encodes": 11,
+    "frames": 201
+   },
+   {
+    "n_moving": 148,
+    "dir_cos_median": 0.9995148181915283,
+    "dir_ok_frac": 0.9662162162162162,
+    "grip_agree": 0.995,
+    "episode": "ep_00487",
+    "encodes": 10,
+    "frames": 200
+   },
+   {
+    "n_moving": 157,
+    "dir_cos_median": 0.9978666305541992,
+    "dir_ok_frac": 0.9426751592356688,
+    "grip_agree": 0.9904306220095693,
+    "episode": "ep_00488",
+    "encodes": 11,
+    "frames": 209
+   },
+   {
+    "n_moving": 152,
+    "dir_cos_median": 0.9999516010284424,
+    "dir_ok_frac": 0.9605263157894737,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00489",
+    "encodes": 11,
+    "frames": 204
+   },
+   {
+    "n_moving": 139,
+    "dir_cos_median": 0.999651312828064,
+    "dir_ok_frac": 0.9640287769784173,
+    "grip_agree": 0.9895287958115183,
+    "episode": "ep_00490",
+    "encodes": 10,
+    "frames": 191
+   },
+   {
+    "n_moving": 163,
+    "dir_cos_median": 0.9966993927955627,
+    "dir_ok_frac": 0.9631901840490797,
+    "grip_agree": 0.9953703703703703,
+    "episode": "ep_00491",
+    "encodes": 11,
+    "frames": 216
+   },
+   {
+    "n_moving": 150,
+    "dir_cos_median": 0.9999126195907593,
+    "dir_ok_frac": 0.98,
+    "grip_agree": 0.9900990099009901,
+    "episode": "ep_00492",
+    "encodes": 11,
+    "frames": 202
+   },
+   {
+    "n_moving": 164,
+    "dir_cos_median": 0.9989623427391052,
+    "dir_ok_frac": 0.9634146341463414,
+    "grip_agree": 0.9907407407407407,
+    "episode": "ep_00493",
+    "encodes": 11,
+    "frames": 216
+   },
+   {
+    "n_moving": 152,
+    "dir_cos_median": 0.9982283115386963,
+    "dir_ok_frac": 0.9539473684210527,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00494",
+    "encodes": 11,
+    "frames": 204
+   },
+   {
+    "n_moving": 153,
+    "dir_cos_median": 0.9999651908874512,
+    "dir_ok_frac": 0.9673202614379085,
+    "grip_agree": 0.9902439024390244,
+    "episode": "ep_00495",
+    "encodes": 11,
+    "frames": 205
+   },
+   {
+    "n_moving": 158,
+    "dir_cos_median": 0.999130368232727,
+    "dir_ok_frac": 0.9683544303797469,
+    "grip_agree": 0.9952380952380953,
+    "episode": "ep_00496",
+    "encodes": 11,
+    "frames": 210
+   },
+   {
+    "n_moving": 150,
+    "dir_cos_median": 0.9988794326782227,
+    "dir_ok_frac": 0.94,
+    "grip_agree": 0.995049504950495,
+    "episode": "ep_00497",
+    "encodes": 11,
+    "frames": 202
+   },
+   {
+    "n_moving": 163,
+    "dir_cos_median": 0.9998414516448975,
+    "dir_ok_frac": 0.9754601226993865,
+    "grip_agree": 0.9906976744186047,
+    "episode": "ep_00498",
+    "encodes": 11,
+    "frames": 215
+   },
+   {
+    "n_moving": 147,
+    "dir_cos_median": 0.999350905418396,
+    "dir_ok_frac": 0.9795918367346939,
+    "grip_agree": 0.9899497487437185,
+    "episode": "ep_00499",
+    "encodes": 10,
+    "frames": 199
+   }
+  ]
+ },
+ "sim | B adaptive 8 cm": {
+  "dir_cos_median": 0.9991042941808701,
+  "dir_ok_frac": 0.9515202686731673,
+  "grip_agree": 0.9906878129183221,
+  "encodes_per_frame": 0.05211646684609738,
+  "episodes": [
+   {
+    "n_moving": 162,
+    "dir_cos_median": 0.9998912215232849,
+    "dir_ok_frac": 0.9753086419753086,
+    "grip_agree": 0.9906542056074766,
+    "episode": "ep_00480",
+    "encodes": 11,
+    "frames": 214
+   },
+   {
+    "n_moving": 149,
+    "dir_cos_median": 0.9994037747383118,
+    "dir_ok_frac": 0.959731543624161,
+    "grip_agree": 0.99,
+    "episode": "ep_00481",
+    "encodes": 11,
+    "frames": 200
+   },
+   {
+    "n_moving": 151,
+    "dir_cos_median": 0.9985973834991455,
+    "dir_ok_frac": 0.9403973509933775,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00482",
+    "encodes": 10,
+    "frames": 204
+   },
+   {
+    "n_moving": 139,
+    "dir_cos_median": 0.9999594688415527,
+    "dir_ok_frac": 0.9640287769784173,
+    "grip_agree": 0.9895287958115183,
+    "episode": "ep_00483",
+    "encodes": 10,
+    "frames": 191
+   },
+   {
+    "n_moving": 147,
+    "dir_cos_median": 0.9992756843566895,
+    "dir_ok_frac": 0.9727891156462585,
+    "grip_agree": 0.9899497487437185,
+    "episode": "ep_00484",
+    "encodes": 10,
+    "frames": 199
+   },
+   {
+    "n_moving": 153,
+    "dir_cos_median": 0.9966288208961487,
+    "dir_ok_frac": 0.7973856209150327,
+    "grip_agree": 0.9902439024390244,
+    "episode": "ep_00485",
+    "encodes": 11,
+    "frames": 205
+   },
+   {
+    "n_moving": 149,
+    "dir_cos_median": 0.9999228119850159,
+    "dir_ok_frac": 0.959731543624161,
+    "grip_agree": 0.9900497512437811,
+    "episode": "ep_00486",
+    "encodes": 10,
+    "frames": 201
+   },
+   {
+    "n_moving": 148,
+    "dir_cos_median": 0.9994747638702393,
+    "dir_ok_frac": 0.9527027027027027,
+    "grip_agree": 0.99,
+    "episode": "ep_00487",
+    "encodes": 10,
+    "frames": 200
+   },
+   {
+    "n_moving": 157,
+    "dir_cos_median": 0.9971828460693359,
+    "dir_ok_frac": 0.9299363057324841,
+    "grip_agree": 0.9952153110047847,
+    "episode": "ep_00488",
+    "encodes": 12,
+    "frames": 209
+   },
+   {
+    "n_moving": 152,
+    "dir_cos_median": 0.9999493360519409,
+    "dir_ok_frac": 0.9736842105263158,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00489",
+    "encodes": 10,
+    "frames": 204
+   },
+   {
+    "n_moving": 139,
+    "dir_cos_median": 0.9995619058609009,
+    "dir_ok_frac": 0.9640287769784173,
+    "grip_agree": 0.9895287958115183,
+    "episode": "ep_00490",
+    "encodes": 10,
+    "frames": 191
+   },
+   {
+    "n_moving": 163,
+    "dir_cos_median": 0.9982287883758545,
+    "dir_ok_frac": 0.9447852760736196,
+    "grip_agree": 0.9907407407407407,
+    "episode": "ep_00491",
+    "encodes": 12,
+    "frames": 216
+   },
+   {
+    "n_moving": 150,
+    "dir_cos_median": 0.9998615980148315,
+    "dir_ok_frac": 0.98,
+    "grip_agree": 0.9900990099009901,
+    "episode": "ep_00492",
+    "encodes": 10,
+    "frames": 202
+   },
+   {
+    "n_moving": 164,
+    "dir_cos_median": 0.9990147352218628,
+    "dir_ok_frac": 0.9573170731707317,
+    "grip_agree": 0.9907407407407407,
+    "episode": "ep_00493",
+    "encodes": 12,
+    "frames": 216
+   },
+   {
+    "n_moving": 152,
+    "dir_cos_median": 0.9983054399490356,
+    "dir_ok_frac": 0.9407894736842105,
+    "grip_agree": 0.9901960784313726,
+    "episode": "ep_00494",
+    "encodes": 11,
+    "frames": 204
+   },
+   {
+    "n_moving": 153,
+    "dir_cos_median": 0.9999638795852661,
+    "dir_ok_frac": 0.9673202614379085,
+    "grip_agree": 0.9902439024390244,
+    "episode": "ep_00495",
+    "encodes": 11,
+    "frames": 205
+   },
+   {
+    "n_moving": 158,
+    "dir_cos_median": 0.9993845224380493,
+    "dir_ok_frac": 0.9683544303797469,
+    "grip_agree": 0.9904761904761905,
+    "episode": "ep_00496",
+    "encodes": 11,
+    "frames": 210
+   },
+   {
+    "n_moving": 150,
+    "dir_cos_median": 0.9983662962913513,
+    "dir_ok_frac": 0.94,
+    "grip_agree": 0.995049504950495,
+    "episode": "ep_00497",
+    "encodes": 10,
+    "frames": 202
+   },
+   {
+    "n_moving": 163,
+    "dir_cos_median": 0.9999144673347473,
+    "dir_ok_frac": 0.9693251533742331,
+    "grip_agree": 0.9906976744186047,
+    "episode": "ep_00498",
+    "encodes": 11,
+    "frames": 215
+   },
+   {
+    "n_moving": 147,
+    "dir_cos_median": 0.9991981387138367,
+    "dir_ok_frac": 0.9727891156462585,
+    "grip_agree": 0.9899497487437185,
+    "episode": "ep_00499",
+    "encodes": 10,
+    "frames": 199
+   }
+  ]
+ }
+}
