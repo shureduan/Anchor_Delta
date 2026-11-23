@@ -1,4 +1,6 @@
-# DELTA on a real robot: anchor + delta vs. dense encoding (Kinova Gen3, "put the bottle into the green box")
+# Task-Aware Anchor-Delta Representations for Robot Learning
+
+*Real-robot study: anchor + delta vs. dense encoding on a Kinova Gen3 ("put the bottle into the green box"), trained in simulation and deployed zero-shot.*
 
 **Question.** Does a visuomotor policy need to encode the camera image at every control step? **Line B** encodes a wrist image only at sparse *anchors*. Between anchors it receives the *delta*, i.e. how the hand has moved since the anchor, computed from robot kinematics and the gripper sensor. **Line A** encodes every frame. Both use the same network, data and training. They are trained only in simulation and run **zero-shot** on a real Kinova Gen3.
 
